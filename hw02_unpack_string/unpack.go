@@ -16,13 +16,13 @@ func Unpack(input string) (string, error) {
 			}
 			count := int(input[index] - '0')
 			if count > 0 {
-				count = count - 1
-				result = result + strings.Repeat(string(input[index-1]), count)
+				count--
+				result += strings.Repeat(string(input[index-1]), count)
 			} else if count == 0 {
-				result = string(input[:index-1])
+				result = input[:index-1]
 			}
 		} else {
-			result = result + string(input[index])
+			result += string(input[index])
 		}
 	}
 	return result, nil
